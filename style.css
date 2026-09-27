@@ -1,0 +1,128 @@
+/* Custom styling for Laporan Rekapitulasi Keuangan Terpadu */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.period-pill.active {
+    background-color: #4f46e5;
+    color: #ffffff;
+    border-color: #4f46e5;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.tab-btn.active {
+    border-color: #4f46e5;
+    color: #4f46e5;
+    background-color: #ffffff;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.tab-panel:not(.hidden) {
+    animation: fadeIn 0.2s ease-out;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* ========================================================= */
+/* A4 PREVIEW & PRINT STYLES - 100% REPLICA OF ATTACHED PDF */
+/* ========================================================= */
+.a4-preview-container {
+    background: #475569;
+    padding: 24px 16px;
+    border-radius: 8px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.a4-page-sheet {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 14mm 16mm;
+    margin: 0 auto 24px auto;
+    background: #ffffff;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    box-sizing: border-box;
+    color: #111827;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    position: relative;
+}
+
+@media (max-width: 860px) {
+    .a4-preview-container {
+        padding: 10px 4px;
+    }
+    .a4-page-sheet {
+        width: 100%;
+        min-height: auto;
+        padding: 12px;
+        margin-bottom: 16px;
+    }
+}
+
+@media print {
+    body * {
+        visibility: hidden !important;
+    }
+    
+    #print-area, #print-area * {
+        visibility: visible !important;
+    }
+
+    #print-area {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        display: block !important;
+        background: white;
+        color: #000;
+        font-family: 'Inter', Arial, sans-serif;
+    }
+
+    .a4-page-sheet {
+        box-shadow: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        min-height: auto !important;
+        border: none !important;
+    }
+
+    .page-break {
+        page-break-after: always;
+        break-after: page;
+        height: 0;
+        display: block;
+    }
+
+    @page {
+        size: A4 portrait;
+        margin: 10mm 15mm;
+    }
+}
+
